@@ -22,15 +22,15 @@ export default function SuccessPage({ session, selectedMovie, selectedSeats, inf
             <InfoContainerStyle>
                 <h1>Comprador</h1>
                 <br />
-                <p>Nome: {info[1]}</p>
-                <p>CPF: {info[0]}</p>
+                <p>Nome: {info.name}</p>
+                <p>CPF: {info.cpf}</p>
             </InfoContainerStyle>
             <Link to="/">
                 <HomeButton type="submit">Voltar para Home</HomeButton>
             </Link>
         </SuccessPageStyle>
-    )
-}
+    );
+};
 
 const TitleStyle = styled.div`
             display: flex;
@@ -43,8 +43,7 @@ const TitleStyle = styled.div`
             color: #247A6B;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-            `
-
+            `;
 const InfoContainerStyle = styled.div`
             margin-left: 24px;
             height: 110px;
@@ -61,8 +60,7 @@ const InfoContainerStyle = styled.div`
             line-height:25.78px;
             width: 338.02px;
 }
-            `
-
+            `;
 const HomeButton = styled.button`
             margin: 0 auto;
             margin-top: 20px;
@@ -74,10 +72,9 @@ const HomeButton = styled.button`
             border: 0;
             font-size: 18px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            `
-
+            `;
 const SuccessPageStyle = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
-`
+`;

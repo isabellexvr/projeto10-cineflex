@@ -1,18 +1,17 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom"
-import { useParams } from "react-router-dom"
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function Main({ days, id, setSession }) {
 
-    const {sessionId} = useParams()
+    const {sessionId} = useParams();
 
     function selectSession(e, weekday, b){
-        console.log(e)
-        const newArr = []
-        newArr.push(weekday)
-        newArr.push(b.name)
-        newArr.push(e.date)
-        setSession(newArr)
+        const newArr = [];
+        newArr.push(weekday);
+        newArr.push(b.name);
+        newArr.push(e.date);
+        setSession(newArr);
     }
 
     return (
@@ -28,15 +27,15 @@ export default function Main({ days, id, setSession }) {
                         </Link>
                     </OptionsButtonsContainer>
                 </div>
-            )}
+            )};
         </MainStyle>
-    )
-}
+    );
+};
 
 const MainStyle = styled.div`
     margin-left: 24px;
 
-`
+`;
 const DayStyle = styled.h1`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
@@ -44,14 +43,13 @@ const DayStyle = styled.h1`
     margin-bottom: 22px;
     font-size: 20px;
 
-`
-//width do container de botoes é (91 * numero de botoes)
+`;
 const OptionsButtonsContainer = styled.div`
  a{
     display: flex;
     width: 273px;
  }
-`
+`;
 const TimeButton = styled.button`
     margin-bottom: 23px;
     background: #E8833A;
@@ -64,4 +62,4 @@ const TimeButton = styled.button`
     font-weight: 400;
     font-size: 18px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`
+`;

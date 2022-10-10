@@ -1,12 +1,12 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export default function Footer(props){
     return (
         <FooterStyle>
             {props.children}
         </FooterStyle>
-    )
-}
+    );
+};
 
 const FooterStyle = styled.div`
     width: 100%;
@@ -18,4 +18,4 @@ const FooterStyle = styled.div`
     bottom: 0;
     display: flex;
     align-items: center;
-`
+`;

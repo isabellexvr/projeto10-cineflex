@@ -1,12 +1,12 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export default function Header(){
     return (
         <HeaderStyle>
             <h1>CINEFLEX</h1>
         </HeaderStyle>
-    )
-}
+    );
+};
 
 const HeaderStyle = styled.div`
     background-color: #E5E5E5;
@@ -22,4 +22,4 @@ const HeaderStyle = styled.div`
         color: #E8833A;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-`
+`;

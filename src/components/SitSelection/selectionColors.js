@@ -5,6 +5,6 @@ const colors = {
     grey_border: "#7B8B99",
     yellow: "#FBE192",
     yellow_border: "#F7C52B"
-}
+};
 
-export default colors
+export default colors;

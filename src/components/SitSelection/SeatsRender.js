@@ -1,16 +1,15 @@
-import { useState } from "react";
 import styled from "styled-components";
 import colors from "./selectionColors";
 import UserInfo from "./UserInfo";
 
 export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, setInfo }) {
 
-    function x(seat) {
+    function selectSeat(seat) {
         if (seat.isAvailable) {
-            const newSelectedSeats = [...selectedSeats, seat]
-            setSelectedSeats(newSelectedSeats)
-        }
-    }
+            const newSelectedSeats = [...selectedSeats, seat];
+            setSelectedSeats(newSelectedSeats);
+        };
+    };
 
     if (!seats) {
         return <div>Carregando...!</div>
@@ -21,7 +20,7 @@ export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, se
                 <SeatsContainerStyle>
                     {seats.map((seat) =>
                         <SeatStyle
-                            onClick={() => x(seat)}
+                            onClick={() => selectSeat(seat)}
                             key={seat.id}
                             color={selectedSeats.includes(seat) ? colors.green : (seat.isAvailable ? colors.grey : colors.yellow)}
                             borderColor={selectedSeats.includes(seat) ? colors.green_border : (seat.isAvailable ? colors.grey_border : colors.yellow_border)}
@@ -48,16 +47,16 @@ export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, se
 
                 </UserInfo>
             </>
-        )
-    }
-}
+        );
+    };
+};
 
 const SeatsContainerStyle = styled.div`
     width: 350px;
     display: flex;
     flex-wrap: wrap;
 
-`
+`;
 const SeatStyle = styled.div`
     display: flex;
     justify-content: center;
@@ -73,7 +72,7 @@ const SeatStyle = styled.div`
         background-color: red;
         border: 1px solid ${colors.green_border};
     }
-`
+`;
 const ColorIndexStyle = styled.div`
     margin-top: 6px;
     height: 54px;
@@ -93,8 +92,7 @@ const ColorIndexStyle = styled.div`
         }
     }
 
-`
-
+`;
 const ColorCircle = styled.div`
 margin-bottom: 1px;
 width: 25px;
@@ -102,4 +100,4 @@ height: 25px;
     border-radius: 50%;
     border: 1px solid ${props => props.borderColor};
     background-color: ${props => props.color};
-`
+`;
