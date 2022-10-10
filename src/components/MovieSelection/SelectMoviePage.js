@@ -3,6 +3,7 @@ import MovieSelect from "./MovieSelect";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import Header from '../Header'
 
 export default function SelectMoviePage({ setSelectedMovie }) {
 
@@ -32,6 +33,11 @@ export default function SelectMoviePage({ setSelectedMovie }) {
 
     return (
         <>
+            <Header>
+                <ContainerStyle>
+                    <h1>CINEFLEX</h1>
+                </ContainerStyle>
+            </Header>
             <TitleStyle>Selecione o filme</TitleStyle>
             <MoviesContainerStyle numberOfMovies={(movies.length / 2) * 241}>
                 {movies.map((movie) =>
@@ -58,7 +64,7 @@ const MoviesContainerStyle = styled.div`
 display: flex;
 justify-content: space-evenly;
 flex-wrap: wrap;
-width: ${props => props.numberOfMovies/2.2}px;
+width: ${props => props.numberOfMovies / 2.2}px;
 margin: 0 auto;
     @media (max-width: 844px) {  
     flex-direction: column;
@@ -67,5 +73,17 @@ margin: 0 auto;
     height: ${props => props.numberOfMovies}px;
     width: 100%;
     flex-wrap: wrap;
+    }
+`;
+const ContainerStyle = styled.div`
+width: 80%;
+display: flex;
+justify-content: center;
+h1 {
+        text-shadow: 2px 2px #9e5e33;
+        font-size: 34px;
+        font-weight: 600;
+        color: #E8833A;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 `;

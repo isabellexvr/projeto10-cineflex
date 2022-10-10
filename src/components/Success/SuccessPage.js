@@ -1,33 +1,44 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Header from '../Header';
 
-export default function SuccessPage({ session, selectedMovie, selectedSeats, info }) {
+export default function SuccessPage({ session, selectedMovie, selectedSeats, info, selectedSession }) {
     return (
-        <SuccessPageStyle>
-            <TitleStyle>Pedido feito com sucesso!</TitleStyle>
-            <InfoContainerStyle>
-                <h1>Filme e sessão</h1>
-                <br />
-                <p>{selectedMovie.title}</p>
-                <p>{session[2]} {session[1]}</p>
-            </InfoContainerStyle>
-            <InfoContainerStyle>
-                <h1>Ingressos</h1>
-                <br />
-                {selectedSeats.map((seat, index) =>
-                    <p key={index}>Assento {seat.name}</p>
-                )}
-            </InfoContainerStyle>
-            <InfoContainerStyle>
-                <h1>Comprador</h1>
-                <br />
-                <p>Nome: {info.name}</p>
-                <p>CPF: {info.cpf}</p>
-            </InfoContainerStyle>
-            <Link to="/">
-                <HomeButton type="submit">Voltar para Home</HomeButton>
-            </Link>
-        </SuccessPageStyle>
+        <>
+            <Header>
+                <Link to={`/sessao/${selectedSession}`}>
+                    <ion-icon alt="voltar" name="arrow-back-circle"></ion-icon>
+                </Link>
+                <ContainerStyle>
+                    <h1>CINEFLEX</h1>
+                </ContainerStyle>
+            </Header>
+            <SuccessPageStyle>
+                <TitleStyle>Pedido feito com sucesso!</TitleStyle>
+                <InfoContainerStyle>
+                    <h1>Filme e sessão</h1>
+                    <br />
+                    <p>{selectedMovie.title}</p>
+                    <p>{session[2]} {session[1]}</p>
+                </InfoContainerStyle>
+                <InfoContainerStyle>
+                    <h1>Ingressos</h1>
+                    <br />
+                    {selectedSeats.map((seat, index) =>
+                        <p key={index}>Assento {seat.name}</p>
+                    )}
+                </InfoContainerStyle>
+                <InfoContainerStyle>
+                    <h1>Comprador</h1>
+                    <br />
+                    <p>Nome: {info.name}</p>
+                    <p>CPF: {info.cpf}</p>
+                </InfoContainerStyle>
+                <Link to="/">
+                    <HomeButton type="submit">Voltar para Home</HomeButton>
+                </Link>
+            </SuccessPageStyle>
+        </>
     );
 };
 
@@ -77,4 +88,16 @@ const SuccessPageStyle = styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
+`;
+const ContainerStyle = styled.div`
+width: 80%;
+display: flex;
+justify-content: center;
+h1 {
+        text-shadow: 2px 2px #9e5e33;
+        font-size: 34px;
+        font-weight: 600;
+        color: #E8833A;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 `;

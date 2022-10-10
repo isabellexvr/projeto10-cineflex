@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-export default function Main({ days, id, setSession }) {
+export default function Main({ days, setSession }) {
 
     const {sessionId} = useParams();
 
@@ -20,7 +20,7 @@ export default function Main({ days, id, setSession }) {
                 <div key={e.id}>
                     <DayStyle>{e.weekday} - {e.date}</DayStyle>
                     <OptionsButtonsContainer>
-                        <Link to={`/sessao/${id}`}>
+                        <Link to={`/sessao/${e.id}`}>
                         {e.showtimes.map((b) =>
                             <TimeButton key={b.id} onClick={()=>selectSession(e, e.weekday, b)}>{b.name}</TimeButton>
                         )}

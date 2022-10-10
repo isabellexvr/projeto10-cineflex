@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import GlobalStyle from "../assets/css/GlobalStyle";
-import Header from "./Header";
+
 import SelectMoviePage from "./MovieSelection/SelectMoviePage";
 import SelectTimePage from "./TimeSelection/SelectTimePage";
 import SelectSitPage from "./SitSelection/SelectSitPage";
 import SuccessPage from "./Success/SuccessPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import { Link } from 'react-router-dom';
 
 export default function App() {
 
@@ -16,12 +15,13 @@ export default function App() {
     const [session, setSession] = useState();
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [info, setInfo] = useState([]);
+    const [selectedSession, setSelectedSession] = useState()
 
     return (
         <BrowserRouter>
             <ScreenStyle>
                 <GlobalStyle />
-                <Link to="/"><Header /></Link>
+
                 <Routes>
                     <Route path="/" 
                     element={<SelectMoviePage setSelectedMovie={setSelectedMovie} />} 
@@ -30,10 +30,10 @@ export default function App() {
                     element={<SelectTimePage selectedMovie={selectedMovie} movie={movie} setMovie={setMovie} setSession={setSession}/>}
                     />
                     <Route path="/sessao/:sessionId" 
-                    element={<SelectSitPage setInfo={setInfo} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} selectedMovie={selectedMovie} session={session}/>}
+                    element={<SelectSitPage setInfo={setInfo} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} selectedMovie={selectedMovie} session={session} setSelectedSession={setSelectedSession}/>}
                     />
                     <Route path="/sucesso" 
-                    element={<SuccessPage info={info} selectedMovie={selectedMovie} session={session} selectedSeats={selectedSeats} />}
+                    element={<SuccessPage info={info} selectedMovie={selectedMovie} session={session} selectedSeats={selectedSeats} selectedSession={selectedSession} />}
                     />
                 </Routes>
             </ScreenStyle>

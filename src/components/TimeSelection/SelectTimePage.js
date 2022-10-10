@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import axios from "axios";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import Main from "./Main";
 import Footer from "../Footer";
 import { useParams } from "react-router-dom";
+import Header from '../Header';
+import { Link } from "react-router-dom";
 
 export default function SelectTimePage({ selectedMovie, movie, setMovie, setSession }) {
+
 
     const { movieId } = useParams();
 
@@ -30,14 +33,24 @@ export default function SelectTimePage({ selectedMovie, movie, setMovie, setSess
     };
     if (movie) {
         return (
-            <PageStyle>
-                <TitleStyle>Selecione o horário</TitleStyle>
-                <Main setSession={setSession} days={movie.days} id={movie.id} />
-                <Footer >
-                    <MoviePosterStyle src={movie.posterURL} />
-                    <MovieTitleStyle>{movie.title}</MovieTitleStyle>
-                </Footer>
-            </PageStyle>
+            <>
+                <Header>
+                    <Link to="/">
+                        <ion-icon alt="voltar" name="arrow-back-circle"></ion-icon>
+                    </Link>
+                    <ContainerStyle>
+                        <h1>CINEFLEX</h1>
+                    </ContainerStyle>
+                </Header>
+                <PageStyle>
+                    <TitleStyle>Selecione o horário</TitleStyle>
+                    <Main setSession={setSession} days={movie.days}/>
+                    <Footer >
+                        <MoviePosterStyle src={movie.posterURL} />
+                        <MovieTitleStyle>{movie.title}</MovieTitleStyle>
+                    </Footer>
+                </PageStyle>
+            </>
         );
     };
 };
@@ -68,4 +81,16 @@ const MovieTitleStyle = styled.h1`
     color: black;
     font-size: 26px;
     font-weight: 400;
+`;
+const ContainerStyle = styled.div`
+width: 80%;
+display: flex;
+justify-content: center;
+h1 {
+        text-shadow: 2px 2px #9e5e33;
+        font-size: 34px;
+        font-weight: 600;
+        color: #E8833A;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 `;

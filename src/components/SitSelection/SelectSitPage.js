@@ -3,8 +3,14 @@ import SeatsRender from "./SeatsRender";
 import Footer from "../Footer";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Header from '../Header';
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-export default function SelectSitPage({ selectedMovie, session, setSelectedSeats, selectedSeats, setInfo }) {
+export default function SelectSitPage({ selectedMovie, session, setSelectedSeats, selectedSeats, setInfo, setSelectedSession }) {
+
+    const {sessionId} = useParams();
+    setSelectedSession(sessionId)
 
     const [seats, setSeats] = useState();
 
@@ -21,23 +27,33 @@ export default function SelectSitPage({ selectedMovie, session, setSelectedSeats
         })
     }, [selectedMovie.id]);
 
-    if (!session){
+    if (!session) {
         return <TitleStyle>Carregando...</TitleStyle>
     };
 
     if (session) {
         return (
-            <SelecSitPageStyle>
-            <TitleStyle>Selecione o(s) assento(s)</TitleStyle>
-            <SeatsRender setInfo={setInfo} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} seats={seats}></SeatsRender>
-            <Footer>
-                <MoviePosterStyle src={selectedMovie.posterURL} />
-                <div>
-                    <MovieTitleStyle>{selectedMovie.title}</MovieTitleStyle>
-                    <MovieTitleStyle>{session[0]} - {session[1]}</MovieTitleStyle>
-                </div>
-            </Footer>
-        </SelecSitPageStyle>
+            <>
+                <Header>
+                    <Link to={`/filme/${selectedMovie.id}`}>
+                        <ion-icon alt="voltar" name="arrow-back-circle"></ion-icon>
+                    </Link>
+                    <ContainerStyle>
+                        <h1>CINEFLEX</h1>
+                    </ContainerStyle>
+                </Header>
+                <SelecSitPageStyle>
+                    <TitleStyle>Selecione o(s) assento(s)</TitleStyle>
+                    <SeatsRender setInfo={setInfo} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} seats={seats}></SeatsRender>
+                    <Footer>
+                        <MoviePosterStyle src={selectedMovie.posterURL} />
+                        <div>
+                            <MovieTitleStyle>{selectedMovie.title}</MovieTitleStyle>
+                            <MovieTitleStyle>{session[0]} - {session[1]}</MovieTitleStyle>
+                        </div>
+                    </Footer>
+                </SelecSitPageStyle>
+            </>
         )
     };
 }
@@ -70,4 +86,16 @@ const MovieTitleStyle = styled.h1`
     color: black;
     font-size: 26px;
     font-weight: 400;
+`;
+const ContainerStyle = styled.div`
+width: 80%;
+display: flex;
+justify-content: center;
+h1 {
+        text-shadow: 2px 2px #9e5e33;
+        font-size: 34px;
+        font-weight: 600;
+        color: #E8833A;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
 `;
