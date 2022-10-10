@@ -85,6 +85,7 @@ const InfoContainer = styled.div`
     }
 `;
 const SubmitButton = styled.button`
+    cursor: pointer;
     margin-top: 20px;
     border-radius: 3px;
     background: #E8833A;

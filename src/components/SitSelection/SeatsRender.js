@@ -45,9 +45,9 @@ export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, se
                     </div>
                     
                 </ColorIndexStyle>
-                
-                </div>
                 <CleanButton onClick={()=> setSelectedSeats([])}>Limpar Escolhas</CleanButton>
+                </div>
+                
                 <UserInfo setInfo={setInfo} selectedSeats={selectedSeats}/>
             </PageStyle>
         );
@@ -58,7 +58,6 @@ const SeatsContainerStyle = styled.div`
     width: 350px;
     display: flex;
     flex-wrap: wrap;
-
 `;
 const SeatStyle = styled.div`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -113,19 +112,29 @@ display: flex;
 justify-content: space-around;
 width: 56%;
 margin: 0 auto;
+>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 @media (max-width: 844px){
 flex-direction: column;
 align-items: center;
 width: 100%;
 }
+
 `;
 const CleanButton = styled.button`
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 3px;
-    background: #E8833A;
+@media (max-width: 844px){
     width: 150px;
     height: 40px;
+}
+    width: 225px;
+    height: 42px;
+    cursor: pointer;
+    border-radius: 3px;
+    background: #E8833A;
+    margin-top: 20px;
     color: white;
     border: 0;
     font-size: 18px;
