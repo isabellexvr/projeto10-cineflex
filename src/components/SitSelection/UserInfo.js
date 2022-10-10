@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-export default function UserInfo({selectedSeats}) {
+export default function UserInfo({selectedSeats, setInfo}) {
 
     const [name, setName] = useState("")
 
@@ -19,6 +19,8 @@ export default function UserInfo({selectedSeats}) {
             setSubmitError(true)
             return
         }
+        const newArr = [cpf, name]
+        setInfo(newArr)
         navigate("/sucesso")
     }
 

@@ -6,10 +6,12 @@ export default function Main({ days, id, setSession }) {
 
     const {sessionId} = useParams()
 
-    function selectSession(weekday, b){
+    function selectSession(e, weekday, b){
+        console.log(e)
         const newArr = []
         newArr.push(weekday)
         newArr.push(b.name)
+        newArr.push(e.date)
         setSession(newArr)
     }
 
@@ -21,7 +23,7 @@ export default function Main({ days, id, setSession }) {
                     <OptionsButtonsContainer>
                         <Link to={`/sessao/${id}`}>
                         {e.showtimes.map((b) =>
-                            <TimeButton key={b.id} onClick={()=>selectSession(e.weekday, b)}>{b.name}</TimeButton>
+                            <TimeButton key={b.id} onClick={()=>selectSession(e, e.weekday, b)}>{b.name}</TimeButton>
                         )}
                         </Link>
                     </OptionsButtonsContainer>

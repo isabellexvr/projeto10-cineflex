@@ -6,8 +6,8 @@ import SelectTimePage from "./TimeSelection/SelectTimePage";
 import SelectSitPage from "./SitSelection/SelectSitPage";
 import SuccessPage from "./Success/SuccessPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react"
-import { Link } from 'react-router-dom'
+import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export default function App() {
 
@@ -18,6 +18,8 @@ export default function App() {
     const [session, setSession] = useState();
 
     const [selectedSeats, setSelectedSeats] = useState([])
+
+    const [info, setInfo] = useState([])
 
     return (
         <BrowserRouter>
@@ -32,10 +34,10 @@ export default function App() {
                     element={<SelectTimePage selectedMovie={selectedMovie} movie={movie} setMovie={setMovie} setSession={setSession} selectedSeats={selectedSeats}/>}
                     />
                     <Route path="/sessao/:sessionId" 
-                    element={<SelectSitPage setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} selectedMovie={selectedMovie} movie={movie} session={session}/>}
+                    element={<SelectSitPage setInfo={setInfo} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} selectedMovie={selectedMovie} movie={movie} session={session}/>}
                     />
                     <Route path="/sucesso" 
-                    element={<SuccessPage />}
+                    element={<SuccessPage info={info} selectedMovie={selectedMovie} session={session} selectedSeats={selectedSeats} />}
                     />
                 </Routes>
             </ScreenStyle>

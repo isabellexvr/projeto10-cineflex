@@ -4,7 +4,7 @@ import Footer from "../Footer"
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function SelectSitPage({ selectedMovie, session, setSelectedSeats, selectedSeats }) {
+export default function SelectSitPage({ selectedMovie, session, setSelectedSeats, selectedSeats, setInfo }) {
 
     const [seats, setSeats] = useState();
 
@@ -29,7 +29,7 @@ export default function SelectSitPage({ selectedMovie, session, setSelectedSeats
         return (
             <SelecSitPageStyle>
             <TitleStyle>Selecione o(s) assento(s)</TitleStyle>
-            <SeatsRender setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} seats={seats}></SeatsRender>
+            <SeatsRender setInfo={setInfo} setSelectedSeats={setSelectedSeats} selectedSeats={selectedSeats} seats={seats}></SeatsRender>
             <Footer>
                 <MoviePosterStyle src={selectedMovie.posterURL} />
                 <div>

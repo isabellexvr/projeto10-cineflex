@@ -3,7 +3,7 @@ import styled from "styled-components";
 import colors from "./selectionColors";
 import UserInfo from "./UserInfo";
 
-export default function SeatsRender({ seats, setSelectedSeats, selectedSeats }) {
+export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, setInfo }) {
 
     function x(seat) {
         if (seat.isAvailable) {
@@ -44,7 +44,7 @@ export default function SeatsRender({ seats, setSelectedSeats, selectedSeats }) 
                         <h1>Indisponível</h1>
                     </div>
                 </ColorIndexStyle>
-                <UserInfo selectedSeats={selectedSeats}>
+                <UserInfo setInfo={setInfo} selectedSeats={selectedSeats}>
 
                 </UserInfo>
             </>
