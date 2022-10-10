@@ -65,7 +65,7 @@ const MoviePosterStyle = styled.img`
 const MovieTitleStyle = styled.h1`
     margin-left: 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #293845;
+    color: black;
     font-size: 26px;
     font-weight: 400;
 `;

@@ -63,12 +63,11 @@ const InfoContainer = styled.div`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 18px;
     color: #293845;
-    margin-top: 31px;
+    margin-top: 20px;
     width: 327px;
     label{
     width: 327px;
     height: 25px;
-
     }
     input {
     width: 327px;
@@ -81,6 +80,8 @@ const InfoContainer = styled.div`
     font-style: oblique;
     margin-bottom: 7px;
     margin-top: 7px;
+    padding-left: 10px;
+    color: #AFAFAF;
     }
 `;
 const SubmitButton = styled.button`

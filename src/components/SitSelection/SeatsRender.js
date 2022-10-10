@@ -43,8 +43,11 @@ export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, se
                         <ColorCircle color={colors.yellow} borderColor={colors.yellow_border}></ColorCircle>
                         <h1>Indisponível</h1>
                     </div>
+                    
                 </ColorIndexStyle>
+                
                 </div>
+                <CleanButton onClick={()=> setSelectedSeats([])}>Limpar Escolhas</CleanButton>
                 <UserInfo setInfo={setInfo} selectedSeats={selectedSeats}/>
             </PageStyle>
         );
@@ -58,6 +61,9 @@ const SeatsContainerStyle = styled.div`
 
 `;
 const SeatStyle = styled.div`
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+    font-size: 11px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,6 +114,20 @@ justify-content: space-around;
 width: 56%;
 margin: 0 auto;
 @media (max-width: 844px){
-display: initial;
+flex-direction: column;
+align-items: center;
+width: 100%;
 }
+`;
+const CleanButton = styled.button`
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 3px;
+    background: #E8833A;
+    width: 150px;
+    height: 40px;
+    color: white;
+    border: 0;
+    font-size: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
