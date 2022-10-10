@@ -2,20 +2,19 @@ import styled from "styled-components"
 import MovieSelect from "./MovieSelect";
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 
-
-export default function SelectMoviePage({selectedMovie, setSelectedMovie}){
+export default function SelectMoviePage({ setSelectedMovie }) {
 
     const [movies, setMovies] = useState(undefined);
 
     const [error, setError] = useState(false);
 
-    useEffect(()=> {
+    useEffect(() => {
         const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies";
         const promise = axios.get(URL)
 
         promise.then((answer) => {
-            console.log(answer.data)
             setMovies(answer.data)
         })
         promise.catch((answer) => {
@@ -37,8 +36,12 @@ export default function SelectMoviePage({selectedMovie, setSelectedMovie}){
     return (
         <>
             <TitleStyle>Selecione o filme</TitleStyle>
-            <MoviesContainerStyle numberOfMovies={(movies.length/2) * 221}>
-            {movies.map((movie)=> <MovieSelect setSelectedMovie={setSelectedMovie} id={movie.id} key={movie.id} posterURL={movie.posterURL}/>)}
+            <MoviesContainerStyle numberOfMovies={(movies.length / 2) * 241}>
+                {movies.map((movie) =>
+                    <Link key={movie.id} to={`/filme/${movie.id}`}>
+                        <MovieSelect movie={movie} setSelectedMovie={setSelectedMovie} id={movie.id} posterURL={movie.posterURL} />
+                    </Link>
+                )}
             </MoviesContainerStyle>
         </>
     );

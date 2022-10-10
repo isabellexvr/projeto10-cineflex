@@ -1,51 +1,32 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
-/* export default function Main({ days }) {
+export default function Main({ days, id, setSession }) {
+
+    const {sessionId} = useParams()
+
+    function selectSession(weekday, b){
+        const newArr = []
+        newArr.push(weekday)
+        newArr.push(b.name)
+        setSession(newArr)
+    }
+
     return (
         <MainStyle>
-            <DayStyle>{days.weekday} - {days.date}</DayStyle>
-            <OptionsButtonsContainer>
-                {days.showtimes.map((e)=>{
-                    <TimeButton id={e.id}>{e.name}</TimeButton>
-                })}
-            </OptionsButtonsContainer>
-        </MainStyle>
-    )
-} */
-
-export default function Main({days}) {
-    return (
-        <MainStyle>
-            <DayStyle>Quinta-feira - 24/06/2021</DayStyle>
-            <OptionsButtonsContainer>
-                <TimeButton onClick={()=>console.log(days)}>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-            </OptionsButtonsContainer>
-            <DayStyle>Quinta-feira - 24/06/2021</DayStyle>
-            <OptionsButtonsContainer>
-                <TimeButton onClick={()=>console.log(days)}>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-            </OptionsButtonsContainer>
-            <DayStyle>Quinta-feira - 24/06/2021</DayStyle>
-            <OptionsButtonsContainer>
-                <TimeButton onClick={()=>console.log(days)}>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-            </OptionsButtonsContainer>
-            <DayStyle>Quinta-feira - 24/06/2021</DayStyle>
-            <OptionsButtonsContainer>
-                <TimeButton onClick={()=>console.log(days)}>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-            </OptionsButtonsContainer>
-            <DayStyle>Quinta-feira - 24/06/2021</DayStyle>
-            <OptionsButtonsContainer>
-                <TimeButton onClick={()=>console.log(days)}>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-                <TimeButton>15:00</TimeButton>
-            </OptionsButtonsContainer>
+            {days.map((e) => 
+                <div key={e.id}>
+                    <DayStyle>{e.weekday} - {e.date}</DayStyle>
+                    <OptionsButtonsContainer>
+                        <Link to={`/sessao/${id}`}>
+                        {e.showtimes.map((b) =>
+                            <TimeButton key={b.id} onClick={()=>selectSession(e.weekday, b)}>{b.name}</TimeButton>
+                        )}
+                        </Link>
+                    </OptionsButtonsContainer>
+                </div>
+            )}
         </MainStyle>
     )
 }
@@ -54,7 +35,6 @@ const MainStyle = styled.div`
     margin-left: 24px;
 
 `
-
 const DayStyle = styled.h1`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
@@ -65,10 +45,11 @@ const DayStyle = styled.h1`
 `
 //width do container de botoes é (91 * numero de botoes)
 const OptionsButtonsContainer = styled.div`
+ a{
     display: flex;
     width: 273px;
+ }
 `
-
 const TimeButton = styled.button`
     margin-bottom: 23px;
     background: #E8833A;

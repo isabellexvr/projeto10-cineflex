@@ -1,32 +1,45 @@
 import styled from "styled-components"
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import Main from "./Main";
-import Footer from "./Footer";
+import Footer from "../Footer";
+import { useParams } from "react-router-dom";
 
-export default function SelectTimePage({ selectedMovie }) {
+export default function SelectTimePage({ selectedMovie, movie, setMovie, setSession }) {
 
-    const [timeSelection, setTimeSelection] = useState()
+    const { movieId } = useParams()
 
     useEffect(() => {
-        const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/4/showtimes`;
+        const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${selectedMovie.id}/showtimes`;
         const promise = axios.get(URL)
 
         promise.then((answer) => {
-            setTimeSelection(answer.data)
+            setMovie(answer.data)
         })
         promise.catch((answer) => {
             console.log(answer.response.data)
         })
     }, []);
 
-    return (
-        <PageStyle>
-            <TitleStyle>Selecione o horário</TitleStyle>
-            <Main />
-            <Footer />
-        </PageStyle>
-    )
+    if (!movie) {
+        return (
+            <PageStyle>
+                <TitleStyle>Carregando...</TitleStyle>
+            </PageStyle>
+        )
+    }
+    if (movie) {
+        return (
+            <PageStyle>
+                <TitleStyle>Selecione o horário</TitleStyle>
+                <Main setSession={setSession} days={movie.days} id={movie.id} />
+                <Footer >
+                    <MoviePosterStyle src={movie.posterURL} />
+                    <MovieTitleStyle>{movie.title}</MovieTitleStyle>
+                </Footer>
+            </PageStyle>
+        )
+    }
 }
 
 const PageStyle = styled.div`
@@ -43,4 +56,18 @@ const TitleStyle = styled.div`
         color: #293845;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
+`
+
+const MoviePosterStyle = styled.img`
+    width: 48px;
+    height: 74px;
+    border: 8px solid #FFFFFF;
+    margin-left: 10px;
+`
+const MovieTitleStyle = styled.h1`
+    margin-left: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #293845;
+    font-size: 26px;
+    font-weight: 400;
 `

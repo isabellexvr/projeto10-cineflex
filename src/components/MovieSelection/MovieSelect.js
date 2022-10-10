@@ -1,9 +1,13 @@
 import styled from "styled-components"
 
-export default function MovieSelect({id, posterURL, setSelectedMovie}) {
-    
+export default function MovieSelect({ id, posterURL, setSelectedMovie, movie }) {
+
+    function movieSelection(movie) {
+        setSelectedMovie(movie)
+    }
+
     return (
-        <MovieSelectStyle onClick={()=>setSelectedMovie(id)} alt={`poster movie ${id}`} src={posterURL}/>
+        <MovieSelectStyle onClick={() => movieSelection(movie)} alt={`poster movie ${id}`} src={posterURL} />
     )
 }
 
