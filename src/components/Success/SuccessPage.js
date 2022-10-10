@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function SuccessPage({ session, selectedMovie, selectedSeats, info }) {
-
     return (
         <SuccessPageStyle>
             <TitleStyle>Pedido feito com sucesso!</TitleStyle>
@@ -62,6 +61,7 @@ const InfoContainerStyle = styled.div`
 }
             `;
 const HomeButton = styled.button`
+            cursor: pointer;
             margin: 0 auto;
             margin-top: 20px;
             border-radius: 3px;

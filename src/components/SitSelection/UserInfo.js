@@ -12,7 +12,7 @@ export default function UserInfo({ selectedSeats, setInfo }) {
 
     function makeAReservation(e) {
         e.preventDefault();
-        if (name.length < 3 || selectedSeats < 1 || (cpf.length < 11 || cpf.length > 11)) {
+        if (name.length < 3 || selectedSeats < 1 || cpf.length !== 11) {
             setSubmitError(true)
             return
         };
@@ -38,7 +38,7 @@ export default function UserInfo({ selectedSeats, setInfo }) {
             {submitError && (
                 <ErrorWindow>
                     <div className="content">
-                        <h1>Erro! Insira um <strong>nome</strong> e um <strong>CPF</strong> válidos.</h1>
+                        <h1>Erro! Selecione o(s) assento(s) e insira um <strong>nome</strong> e um <strong>CPF</strong> válidos.</h1>
                         <button onClick={() => setSubmitError(false)}>X</button>
                     </div>
                 </ErrorWindow>
@@ -100,7 +100,7 @@ z-index: 1;
     top: 0;
     left: 0;
     height: 100vh;
-  width: 100%;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
@@ -108,12 +108,12 @@ z-index: 1;
     .content {
         background-color: white;
         border-radius: 5px;
-        width: 250px;
-        height: 70px;
+        width: 260px;
+        height: 83px;
         display: flex;
         h1 {
             margin-top: 10px;
-            margin-left: 5px;
+            margin-left: 8px;
             font-size: 20px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             strong {
@@ -121,8 +121,9 @@ z-index: 1;
             }
         }
         button {
+            cursor: pointer;
             margin-top: 10px;
-            margin-right: 5px;
+            margin-right: 8px;
             background: red;
             height: 20px;
             width: 20px;

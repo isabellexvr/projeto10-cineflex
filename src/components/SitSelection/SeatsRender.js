@@ -16,7 +16,8 @@ export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, se
     }
     if (seats) {
         return (
-            <>
+            <PageStyle>
+                <div>
                 <SeatsContainerStyle>
                     {seats.map((seat) =>
                         <SeatStyle
@@ -43,10 +44,9 @@ export default function SeatsRender({ seats, setSelectedSeats, selectedSeats, se
                         <h1>Indisponível</h1>
                     </div>
                 </ColorIndexStyle>
-                <UserInfo setInfo={setInfo} selectedSeats={selectedSeats}>
-
-                </UserInfo>
-            </>
+                </div>
+                <UserInfo setInfo={setInfo} selectedSeats={selectedSeats}/>
+            </PageStyle>
         );
     };
 };
@@ -79,6 +79,7 @@ const ColorIndexStyle = styled.div`
     width: 286px;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
     div {
         display: flex;
         flex-direction: column;
@@ -100,4 +101,13 @@ height: 25px;
     border-radius: 50%;
     border: 1px solid ${props => props.borderColor};
     background-color: ${props => props.color};
+`;
+const PageStyle = styled.div`
+display: flex;
+justify-content: space-around;
+width: 56%;
+margin: 0 auto;
+@media (max-width: 844px){
+display: initial;
+}
 `;

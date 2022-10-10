@@ -55,11 +55,17 @@ const TitleStyle = styled.div`
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 const MoviesContainerStyle = styled.div`
-    display: flex;
+display: flex;
+justify-content: space-evenly;
+flex-wrap: wrap;
+width: ${props => props.numberOfMovies/2.2}px;
+margin: 0 auto;
+    @media (max-width: 844px) {  
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     height: ${props => props.numberOfMovies}px;
     width: 100%;
     flex-wrap: wrap;
+    }
 `;

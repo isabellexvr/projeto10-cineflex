@@ -27,14 +27,23 @@ export default function Main({ days, id, setSession }) {
                         </Link>
                     </OptionsButtonsContainer>
                 </div>
-            )};
+            )}
         </MainStyle>
     );
 };
 
 const MainStyle = styled.div`
-    margin-left: 24px;
-
+display: flex;
+align-items: center;
+width: 60%;
+flex-wrap: wrap;
+margin: 0 auto;
+@media (max-width: 844px){
+    display: initial;
+    >div {
+        margin-left: 24px;
+    }
+}
 `;
 const DayStyle = styled.h1`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -51,6 +60,8 @@ const OptionsButtonsContainer = styled.div`
  }
 `;
 const TimeButton = styled.button`
+    cursor: pointer;
+    box-sizing: border-box;
     margin-bottom: 23px;
     background: #E8833A;
     border-radius: 3px;
